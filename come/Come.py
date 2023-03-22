@@ -1,9 +1,9 @@
 import pymysql
 import streamlit as st
-from E_mail import e_mail,dict_1
+from E_mail import e_mail, dict_1
 
 # 链接数据库
-connect = pymysql.connect(host='localhost',
+connect = pymysql.connect(host='192.168.100.221',
                           user='root',
                           password='123456',
                           db='qian',
