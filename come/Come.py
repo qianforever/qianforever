@@ -2,9 +2,6 @@ import pymysql
 import streamlit as st
 from E_mail import e_mail, dict_1, con
 
-st.write("已链接上数据库")
-
-
 st.set_page_config(page_title="来访申请表")
 st.header("来访申请表")
 
