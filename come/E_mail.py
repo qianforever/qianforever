@@ -2,6 +2,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
+import pymysql
+
 
 def e_mail(text, e, zt):
     mail_host = "smtp.qiye.aliyun.com"  # 设置服务器
@@ -116,3 +118,13 @@ def dict_1(key):
         '陈晓旦': '806663909@qq.com',
     }
     return dict1.get(key)
+
+
+def con():
+    connect = pymysql.connect(host='192.168.100.221',
+                              user='root',
+                              password='123456',
+                              db='qian',
+                              charset='utf8')  # 服务器名,账户,密码,数据库名
+    cur = connect.cursor()
+    return cur

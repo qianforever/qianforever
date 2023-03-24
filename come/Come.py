@@ -1,17 +1,9 @@
 import pymysql
 import streamlit as st
-from E_mail import e_mail, dict_1
+from E_mail import e_mail, dict_1, con
 
-try:
-    # 链接数据库
-    connect = pymysql.connect(host='192.168.100.221',
-                              user='root',
-                              password='123456',
-                              db='qian',
-                              charset='utf8')  # 服务器名,账户,密码,数据库名
-    cur = connect.cursor()
-except:
-    print("e")
+st.write("已链接上数据库")
+
 
 st.set_page_config(page_title="来访申请表")
 st.header("来访申请表")
@@ -52,8 +44,9 @@ t = "来访单位:{}\n来访人数:{}\n来访者姓名:{}\n身份证号码:{}\n�
 if st.button('提交'):
     sql = "INSERT INTO lfsq VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     param = (dw, rs, xm, id, phone, car_id, bfz_xm, bfz_phone, date, time)
+    cur = con()
     cur.execute(sql, param)
-    connect.commit()
+    cur.commit()
     #     # st.write('')
     st.success('提交成功')
     #     connect.close()
